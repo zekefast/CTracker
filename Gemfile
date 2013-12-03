@@ -48,10 +48,10 @@ gem "savon"
 gem "nokogiri"
 
 group :development do
-  gem "capybara"
-  gem "database_cleaner"
 end
 
 group :test do
-  gem 'cucumber-rails', :require => false
+  gem "cucumber-rails", require: false
+  gem "capybara"
+  gem "database_cleaner"
 end
