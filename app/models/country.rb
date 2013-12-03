@@ -1,15 +1,22 @@
 class Country < ActiveRecord::Base
-  set_primary_key :code
-  attr_accessible :name, :code, :visited
+  self.primary_key = :code
 
-  validates_presence_of :name
-  validates_presence_of :code
-  validates_uniqueness_of :code, :allow_blank => true
+  validates :name,
+    presence: true
+  validates :code,
+    presence: true,
+    uniqueness: {allow_blank: true}
+
 
   has_many :currencies
 
   accepts_nested_attributes_for :currencies, :allow_destroy => true
 
-  scope :visited, :conditions => { :visited => true }
-  scope :not_visited, :conditions => { :visited => false }
+
+  scope :visited, lambda {
+    where(visited: true)
+  }
+  scope :not_visited, lambda {
+    where(visited: false)
+  }
 end
