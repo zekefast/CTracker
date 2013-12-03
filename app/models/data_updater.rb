@@ -9,9 +9,7 @@ class DataUpdater
   end
 
   def initialize
-    @client = Savon::Client.new do
-      wsdl.document = "http://www.webservicex.net/country.asmx?WSDL"
-    end
+    @client = Savon.client(wsdl: "http://www.webservicex.net/country.asmx?WSDL")
   end
 
   def update
@@ -19,18 +17,18 @@ class DataUpdater
     return nil if response.nil?
 
     data = parse_response(response)
-    data.keys.each do |key| 
+    data.keys.each do |key|
       data[key].each do |attributes|
         object = key.to_s.classify.constantize.find_or_create_by_code(attributes)
-        
       end
     end
   end
 
   private
+
   def get_soap_response
     begin
-      response = (defined?(USE_STATIC_DATA) && USE_STATIC_DATA) ? StaticSOAPResponse.new : @client.request(:get_currencies)
+      response = (defined?(USE_STATIC_DATA) && USE_STATIC_DATA) ? StaticSOAPResponse.new : @client.call(:get_currencies)
     rescue Exception => e
       Rails.logger.error "Error retrieving SOAP Response: '#{e.message}'"
       e.backtrace.each {|line| Rails.logger.error "- #{line}" }
@@ -45,7 +43,7 @@ class DataUpdater
   #         :country_code => "Country Code"
   #       }
   #     ],
-  #     
+  #
   #     :countries => [
   #       { :name => "Country Name",
   #         :code => "Country Code"
@@ -56,14 +54,14 @@ class DataUpdater
     doc = Nokogiri::XML::Document.parse( response.to_hash[:get_currencies_response][:get_currencies_result] )
 
     result = {}
-    
+
     result[:currencies] = doc.css('Table').collect do |table|
       { :name => table.css('Currency').text,
         :code => table.css('CurrencyCode').text,
         :country_id => table.css('CountryCode').text
       }
     end
-    
+
     result[:countries] = doc.css('Table').collect {|table| { :name => table.css('Name').text, :code => table.css('CountryCode').text } }
 
     result.keys.each {|key| result[key].reject! {|hash| hash[:name].blank? || hash[:code].blank? } }
