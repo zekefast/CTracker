@@ -47,6 +47,8 @@ end
 gem "savon"
 gem "nokogiri"
 
+gem "devise"
+
 group :development do
 end
 

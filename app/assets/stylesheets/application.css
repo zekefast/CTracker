@@ -11,3 +11,59 @@
  *= require_self
  *= require_tree .
  */
+
+body > header {
+  width: 100%;
+  text-align: center;
+}
+
+header > h1 {
+  margin-bottom: 20pt;
+}
+
+body > section {
+  text-align: center;
+  clear: both;
+  width: 100%;
+}
+
+body > footer {
+  width: 100%;
+  text-align: center;
+  margin-top: 20pt;
+}
+
+nav {
+  position: relative;
+  float: right;
+  text-align: left;
+  left: -50%;
+}
+
+nav ul {
+  list-style: none;
+  position: relative;
+  left: 50%;
+}
+
+nav ul li {
+  float: left;
+  position: relative;
+}
+
+nav ul li a {
+  text-decoration: none;
+  margin: 10px;
+}
+
+.notice {
+  color: green;
+}
+
+.alert {
+  color: red;
+}
+
+#error_explanation {
+  color: red;
+}

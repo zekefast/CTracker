@@ -32,4 +32,7 @@ CurrencyTracker::Application.configure do
 
   # Don't use the real Web Service, use the seed data.
   USE_STATIC_DATA = true
+
+
+  config.action_mailer.default_url_options = {host: "locahost:3000"}
 end
