@@ -12,32 +12,44 @@
  *= require_tree .
  */
 
-body > header {
+* {
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  margin: 10pt 0 10pt 0;
+}
+
+nav {
+  margin: 10pt 0 10pt 0;
+  position: relative;
+  float: right;
+  text-align: left;
+  left: -50%;
+}
+
+footer {
+  position: relative;
   width: 100%;
+  text-align: center;
+  margin-top: 20pt;
+}
+
+table {
+  margin: 10pt auto 10pt auto;
   text-align: center;
 }
 
-header > h1 {
-  margin-bottom: 20pt;
+body > header {
+  width: 100%;
+  text-align: center;
 }
 
 body > section {
   text-align: center;
   clear: both;
   width: 100%;
-}
-
-body > footer {
-  width: 100%;
-  text-align: center;
-  margin-top: 20pt;
-}
-
-nav {
-  position: relative;
-  float: right;
-  text-align: left;
-  left: -50%;
 }
 
 nav ul {
@@ -60,10 +72,12 @@ nav ul li a {
   color: green;
 }
 
-.alert {
+.alert,
+#error_explanation {
   color: red;
 }
 
-#error_explanation {
-  color: red;
+#content {
+  position: relative;
+  text-align: center;
 }

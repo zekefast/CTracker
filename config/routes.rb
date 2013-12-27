@@ -1,10 +1,11 @@
 CurrencyTracker::Application.routes.draw do
-  devise_for :users
-  root to: "currencies#index"
+  devise_for :users, path: ""
+  root to: "collections#index"
 
-  resources :countries, except: [:new, :destroy]
-
-  resources :currencies, only: [:index, :show]
+  resources :collections, only: %i[index]
+  resources :currencies,  only: %i[index show]
+  resources :countries,   only: %i[index show]
+  resources :users,       only: :update
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

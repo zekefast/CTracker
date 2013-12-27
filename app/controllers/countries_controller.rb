@@ -1,60 +1,23 @@
 class CountriesController < ApplicationController
-  # GET /countries
   # GET /countries.xml
+  # GET /countries.json
   def index
     @countries = Country.all
 
     respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @countries }
+      format.xml  { render xml:  @countries.to_xml(only: [:id, :name, :code], skip_types: true) }
+      format.json { render json: @countries.to_json(only: [:id, :name, :code]) }
     end
   end
 
-  # GET /countries/1
   # GET /countries/1.xml
+  # GET /countries/1.json
   def show
     @country = Country.find(params[:id])
 
     respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @country }
-    end
-  end
-
-  # GET /countries/1/edit
-  def edit
-    @country = Country.find(params[:id])
-  end
-
-  # POST /countries
-  # POST /countries.xml
-  def create
-    @country = Country.new(params.require(:country).permit(:name, :code, :visited))
-
-    respond_to do |format|
-      if @country.save
-        format.html { redirect_to(@country, :notice => 'Country was successfully created.') }
-        format.xml  { render :xml => @country, :status => :created, :location => @country }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @country.errors, :status => :unprocessable_entity }
-      end
-    end
-  end
-
-  # PUT /countries/1
-  # PUT /countries/1.xml
-  def update
-    @country = Country.find(params[:id])
-
-    respond_to do |format|
-      if @country.update_attributes(params.require(:country).permit(:name, :code, :visited))
-        format.html { redirect_to(@country, :notice => 'Country was successfully updated.') }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @country.errors, :status => :unprocessable_entity }
-      end
+      format.xml  { render xml:  @country.to_xml(only: [:id, :name, :code], skip_types: true) }
+      format.json { render json: @country.to_json(only: [:id, :name, :code]) }
     end
   end
 end

@@ -10,15 +10,14 @@
     <header>
       <h1>CurrencyTracker</h1>
       <section>
-         <p class="notice"><%= notice %></p>
-         <p class="alert"><%= alert %></p>
+         <p class="notice" id="notice"><%= notice %></p>
+         <p class="alert" id="alert"><%= alert %></p>
       </section>
     </header>
     <nav>
       <ul>
         <% if user_signed_in? %>
-        <li><%= link_to "Currencies", currencies_path %></li>
-        <li><%= link_to "Countries", countries_path %></li>
+        <li><%= link_to "Collections", collections_path %></li>
         <li><%= link_to "Profile", edit_user_registration_path %></li>
         <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
         <% else %>
@@ -27,7 +26,7 @@
         <% end %>
       </ul>
     </nav>
-    <section>
+    <section id="content">
       <%= yield %>
     </section>
     <footer>

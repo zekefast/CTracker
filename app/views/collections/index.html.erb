@@ -1,0 +1,44 @@
+<div id="chart" class="simple_pie_chart" width='300px' height='100px'>
+  <table>
+    <tr>
+      <th>Visited Countries:</th>
+      <td><%= %></td>
+    </tr>
+    <tr>
+      <th>Countries to visit:</th>
+      <td><%= %></td>
+    </tr>
+    <tr>
+      <th>Collected currencies:</th>
+      <td><%= %></td>
+    </tr><tr>
+      <th>Currencies to collect:</th>
+      <td><%= %></td>
+    </tr>
+  </table>
+</div>
+
+<h1>Visited countries and collected currencies</h1>
+
+<%= form_for current_user do |f| %>
+<table>
+  <tr>
+    <th>Ownership Status</th>
+    <th>Country Name</th>
+    <th>Country Code</th>
+    <th>Currency Name</th>
+    <th>Currency Code</th>
+  </tr>
+
+<% @countries_currencies.each do |cc| %>
+  <tr>
+    <td><%= check_box_tag "user[countries_currencies][]", cc.id, @current_user_countries_currencies.include?(cc) %></td>
+    <td><%= cc.country.name %></td>
+    <td><%= cc.country.code %></td>
+    <td><%= cc.currency.name %></td>
+    <td><%= cc.currency.code %></td>
+  </tr>
+<% end %>
+</table>
+<%= f.submit "Save ownership" %>
+<% end %>
