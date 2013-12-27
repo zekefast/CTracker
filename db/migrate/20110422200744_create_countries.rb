@@ -1,15 +1,12 @@
 class CreateCountries < ActiveRecord::Migration
-  def self.up
-    create_table :countries, :id => false do |t|
+  def change
+    create_table :countries do |t|
       t.string :name
       t.string :code
 
-      t.timestamps
-      t.primary_key :code
-    end
-  end
+      t.index :code, unique: true
 
-  def self.down
-    drop_table :countries
+      t.timestamps
+    end
   end
 end
