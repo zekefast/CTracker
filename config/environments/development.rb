@@ -31,8 +31,7 @@ CurrencyTracker::Application.configure do
   #config.action_dispatch.best_standards_support = :builtin
 
   # Don't use the real Web Service, use the seed data.
-  USE_STATIC_DATA = true
-
+  WEBSERVICEX_COUNTRY_SERVICE_NAME = :dummy_local_file_country
 
   config.action_mailer.default_url_options = {host: "locahost:3000"}
 end
