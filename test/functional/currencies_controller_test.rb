@@ -8,6 +8,7 @@ class CurrenciesControllerTest < ActionController::TestCase
                                 :update => :put
 
   setup do
+    @controller = CurrenciesController.new
     @currency = currencies(:one)
   end
 

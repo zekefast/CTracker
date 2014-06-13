@@ -3,14 +3,8 @@
 # newer version of cucumber-rails. Consider adding your own code to a new file 
 # instead of editing this one. Cucumber will automatically load all features/**/*.rb
 # files.
-require 'capybara'
-require 'database_cleaner'
-require 'cucumber/rails'
 
-if RUBY_VERSION =~ /1.8/
-  require 'test/unit/testresult'
-  Test::Unit.run = true
-end
+require 'cucumber/rails'
 
 # Capybara defaults to XPath selectors rather than Webrat's default of CSS3. In
 # order to ease the transition to Capybara we set the default here. If you'd
@@ -42,4 +36,24 @@ begin
 rescue NameError
   raise "You need to add database_cleaner to your Gemfile (in the :test group) if you wish to use it."
 end
+
+# You may also want to configure DatabaseCleaner to use different strategies for certain features and scenarios.
+# See the DatabaseCleaner documentation for details. Example:
+#
+#   Before('@no-txn,@selenium,@culerity,@celerity,@javascript') do
+#     # { :except => [:widgets] } may not do what you expect here
+#     # as tCucumber::Rails::Database.javascript_strategy overrides
+#     # this setting.
+#     DatabaseCleaner.strategy = :truncation
+#   end
+#
+#   Before('~@no-txn', '~@selenium', '~@culerity', '~@celerity', '~@javascript') do
+#     DatabaseCleaner.strategy = :transaction
+#   end
+#
+
+# Possible values are :truncation and :transaction
+# The :transaction strategy is faster, but might give you threading problems.
+# See https://github.com/cucumber/cucumber-rails/blob/master/features/choose_javascript_database_strategy.feature
+Cucumber::Rails::Database.javascript_strategy = :truncation
 

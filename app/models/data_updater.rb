@@ -4,6 +4,10 @@ require 'nokogiri'
 class DataUpdater
   include Singleton
 
+  def self.update
+    new.update
+  end
+
   def initialize
     @client = Savon::Client.new do
       wsdl.document = "http://www.webservicex.net/country.asmx?WSDL"
