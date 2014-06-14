@@ -9,6 +9,9 @@ gem "sqlite3"
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
+gem "bootstrap-sass"
+gem "bootstrap_form"
+
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 
@@ -20,9 +23,13 @@ gem 'therubyracer', platforms: :ruby
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+gem "jquery-ui-rails"
+gem "jquery-datatables-rails"
+
+gem "chart-js-rails"
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks'
+#gem 'turbolinks'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
@@ -49,6 +56,9 @@ gem "nokogiri"
 
 gem "devise"
 gem "foreigner"
+gem "kaminari"
+
+gem "haml-rails"
 
 group :development do
 end
