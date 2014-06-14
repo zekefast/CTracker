@@ -4,7 +4,7 @@ class CreateCountriesCurrencies < ActiveRecord::Migration
       t.references :country, null: false, index: true
       t.references :currency, null: false, index: true
 
-      t.foreign_key :countrys
+      t.foreign_key :countries
       t.foreign_key :currencies
 
       t.index %i[country_id currency_id], unique: true
