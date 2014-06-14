@@ -10,4 +10,13 @@ class Collection < ActiveRecord::Base
     presence: true
   validates :user,
     presence: true
+
+
+  class << self
+    # @return [Hash{String=>Integer}] number of collections indexed by dates
+    def count_by_date
+      group("DATE(created_at)").
+      count
+    end
+  end
 end
