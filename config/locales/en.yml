@@ -21,3 +21,59 @@
 
 en:
   hello: "Hello world"
+  application_title: "Currency Tracker"
+  links:
+    sign_in: "Sign in"
+    sing_up: "Sign up"
+    logout: "Logout"
+    profile: "Profile"
+    forgot_password: "Forgot your password?"
+    repeat_confirmation_email: "Didn't receive confirmation instructions?"
+    repeat_unlock_email: "Didn't receive unlock instructions?"
+    collections: "Collection"
+  datatable:
+    collection:
+      title: "Visited countries and collected currencies"
+      columns:
+        ownership_status: "Ownership Status"
+        country_name: "Country Name"
+        country_code: "Country Code"
+        currency_name: "Currency Name"
+        currency_code: "Currency Code"
+  form:
+    currency_ownership:
+      buttons:
+        submit: "Save ownership"
+    sign_in:
+      buttons:
+        submit: "Sign in"
+      checkboxes:
+        remember_me: "Remember me"
+    sign_up:
+      buttons:
+        submit: "Sing up"
+    profile:
+      buttons:
+        submit: "Update"
+    change_password:
+      buttons:
+        submit: "Change my password"
+    forgot_password:
+      buttons:
+        submit: "Send me reset password instructions"
+    unlock:
+      buttons:
+        submit: "Resend unlock instructions"
+  page:
+    titles:
+      sign_in: "Sign in"
+      sign_up: "Sign up"
+      profile: "Profile"
+      change_password: "Change your password"
+      forgot_password: "Forgot your password?"
+      unlock: "Resend unlock instructions"
+      collection: "Collection"
+  graphs:
+    collection:
+      title: "Currency/Data correlation"
+  footer: "Currency Tracker &copy; Copyright 2011 by Smart Enterprises."
