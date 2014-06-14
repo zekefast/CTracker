@@ -1,0 +1,20 @@
+- content_for :page_title, t("page.titles.collection")
+
+%h4= t("graphs.collection.title")
+
+%canvas#canvas{height: 200, width: 1100}
+
+
+%h4= t("datatable.collection.title")
+
+= form_for current_user do |f|
+  %table#collection.display{"data-source" => collections_url(format: "json")}
+    %thead
+      %tr
+        %th= t "datatable.collection.columns.ownership_status"
+        %th= t "datatable.collection.columns.country_name" 
+        %th= t "datatable.collection.columns.country_code" 
+        %th= t "datatable.collection.columns.currency_name" 
+        %th= t "datatable.collection.columns.currency_code" 
+    %tbody
+  = f.submit t("form.currency_ownership.buttons.submit")

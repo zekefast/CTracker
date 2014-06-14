@@ -1,0 +1,22 @@
+- content_for :page_title, t("page.titles.profile")
+
+= bootstrap_form_for(resource, as: resource_name, url: registration_path(resource_name), html: {:method => :put}, :layout => :horizontal) do |f|
+  = f.email_field :email, autofocus: true
+  - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+    %div
+      Currently waiting confirmation for: #{resource.unconfirmed_email}
+  = f.password_field :password, autocomplete: "off", help: "(leave blank if you don't want to change it)"
+  = f.password_field :password_confirmation
+  = f.password_field :current_password, help: "(we need your current password to confirm your changes)"
+  = f.form_group do
+    = f.submit t("form.profile.buttons.submit")
+
+%h3 Cancel my account
+
+%form.form-horizontal  
+  .form_group
+    .col-sm-2.control-label= "Unhappy?"
+    .col-sm-10
+      = button_to "Cancel my account", registration_path(resource_name), data: {confirm: "Are you sure?"}, :method => :delete, class: "btn btn-danger"
+
+= link_to "Back", :back

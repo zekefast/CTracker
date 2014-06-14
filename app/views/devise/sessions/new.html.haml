@@ -1,0 +1,12 @@
+- content_for :page_title, t("page.titles.sign_in")
+
+= bootstrap_form_for(resource, as: resource_name, url: session_path(resource_name), :layout => :horizontal) do |f|
+  = f.email_field :email, autofocus: true
+  = f.password_field :password
+  - if devise_mapping.rememberable?
+    = f.form_group do
+      = f.check_box :remember_me, label: t("form.sign_in.checkboxes.remember_me")
+  = f.form_group do
+    = f.submit t("form.sign_in.buttons.submit")
+
+= render "devise/shared/links"

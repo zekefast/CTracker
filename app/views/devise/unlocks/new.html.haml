@@ -1,0 +1,8 @@
+- content_for :page_title, t("page.titles.unlock")
+
+= bootstrap_form_for(resource, as: resource_name, url: unlock_path(resource_name), html: {:method => :post}, :layout => :horizontal) do |f|
+  = f.email_field :email, autofocus: true
+  = f.form_group do
+    = f.submit t("form.unlock.buttons.submit")
+
+= render "devise/shared/links"

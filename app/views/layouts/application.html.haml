@@ -1,0 +1,35 @@
+!!!
+%html
+  %head
+    %meta{charset: "utf-8"}
+    %meta{"http-equiv" => "X-UA-Compatible", content: "IE=edge"}
+    %meta{name: "viewport", content: "width=device-width, initial-scale=1"}
+    %title= t :application_title
+    = stylesheet_link_tag    "application", media: "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+  %body
+    .navbar.navbar-default.navbar-static-top{role: "navigation"}
+      .container
+        .navbar-header
+          %a.navbar-brand{href: root_path}= t :application_title
+        .navbar-collapse.collapse
+          %ul.nav.navbar-nav
+          %ul.nav.navbar-nav.navbar-right
+            - if user_signed_in?
+              %li= link_to t("links.profile"), edit_user_registration_path
+              %li= link_to t("links.logout"), destroy_user_session_path, method: :delete
+            - else
+              %li= link_to t("links.sing_in"), new_session_path(resource_name)
+              %li= link_to t("links.sing_up"), new_registration_path(resource_name)
+    .container
+      - if notice
+        .alert.alert-success= notice
+      - if alert
+        .alert.alert-danger= alert
+      .page-header
+        %h1= yield(:page_title)
+      = yield
+    #footer
+      .container
+        %p.text-muted= t("footer")
