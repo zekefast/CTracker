@@ -2,6 +2,7 @@ CurrencyTracker::Application.routes.draw do
   devise_for :users, path: ""
   root to: "collections#index"
 
+  resources :charts,       only: %i[index]
   resources :collections, only: %i[index]
   resources :currencies,  only: %i[index show]
   resources :countries,   only: %i[index show]
