@@ -51,7 +51,7 @@ en:
         remember_me: "Remember me"
     sign_up:
       buttons:
-        submit: "Sing up"
+        submit: "Sign up"
     profile:
       buttons:
         submit: "Update"
