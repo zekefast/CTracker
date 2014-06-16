@@ -64,12 +64,13 @@ group :development do
 end
 
 group :test do
+  gem "shoulda-matchers"
+  gem "database_cleaner"
   gem "cucumber-rails", require: false
   gem "capybara"
-  gem "database_cleaner"
-  gem "shoulda"
 end
 
 group :development, :test do
+  gem "rspec-rails"
   gem "factory_girl_rails"
 end
