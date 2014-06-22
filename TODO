@@ -1,10 +1,5 @@
 TODO:
 
-* Used Ruby version MRI 1.9.3 is stale and it's officially recommended to 
-  switch to one of 2.x branches because of security and support. Also some 
-  feature and performance improvements (most singificant is GC) was made in 
-  latest versions of MRI interpreter was made.
-  So, Ruby update simplify and improve development and production usage process.
 * Many bug fixes and features was made to new version of Ruby on Rails 4.x.
   So, to avoid fixing stale and commonly know problems and reimplement features
   present in 4.x branch application moved to latest version of Ruby on Rails 
