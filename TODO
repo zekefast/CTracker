@@ -1,0 +1,26 @@
+TODO:
+
+* Move Ruby version specification from Gemfile to standard .ruby-version file
+  which is understood by several ruby version managers like RVM and rv-env and
+  produce no warnings in standard configuration on RVM. Plus, it's used by RVM 
+  by default.
+* Specify gemset name in .ruby-gemset file. This is simplify to separate scope 
+  of gems from other projects on developer's computers and on some production
+  deployments as well.
+* Used Ruby version MRI 1.9.3 is stale and it's officially recommended to 
+  switch to one of 2.x branches because of security and support. Also some 
+  feature and performance improvements (most singificant is GC) was made in 
+  latest versions of MRI interpreter was made.
+  So, Ruby update simplify and improve development and production usage process.
+* Many bug fixes and features was made to new version of Ruby on Rails 4.x.
+  So, to avoid fixing stale and commonly know problems and reimplement features
+  present in 4.x branch application moved to latest version of Ruby on Rails 
+  4.x branch.
+* TestUnit for Ruby is rarely used nowadays. 
+  There is a commonly known better replacement to it, like RSpec. 
+  Latest version of it 3.0.0 and along with new powerful feature it doesn't
+  polute tested objects with test specific methods (when expect syntax is used).
+  So, it's worth to upgrade tests framework to RSpec.
+* There is a much better replacement to static fixtures provided by Rails.
+  Replace Rails's fixtures with "rails-factory_girl".
+
