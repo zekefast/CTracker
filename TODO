@@ -2,10 +2,10 @@ TODO:
 
 * Many bug fixes and features was made to new version of Ruby on Rails 4.x.
   So, to avoid fixing stale and commonly know problems and reimplement features
-  present in 4.x branch application moved to latest version of Ruby on Rails 
+  present in 4.x branch application moved to latest version of Ruby on Rails
   4.x branch.
-* TestUnit for Ruby is rarely used nowadays. 
-  There is a commonly known better replacement to it, like RSpec. 
+* TestUnit for Ruby is rarely used nowadays.
+  There is a commonly known better replacement to it, like RSpec.
   Latest version of it 3.0.0 and along with new powerful feature it doesn't
   polute tested objects with test specific methods (when expect syntax is used).
   So, it's worth to upgrade tests framework to RSpec.
