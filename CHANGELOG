@@ -2,3 +2,7 @@ CHANGELOG:
 
 * Fix defect with absent JavaScript environment which present tests from 
   running.
+* Move Ruby version specification from Gemfile to standard .ruby-version file
+  which is understood by several ruby version managers like RVM and rv-env and
+  produce no warnings in standard configuration on RVM. Plus, it's used by RVM 
+  by default.

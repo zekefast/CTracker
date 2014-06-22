@@ -1,9 +1,5 @@
 TODO:
 
-* Move Ruby version specification from Gemfile to standard .ruby-version file
-  which is understood by several ruby version managers like RVM and rv-env and
-  produce no warnings in standard configuration on RVM. Plus, it's used by RVM 
-  by default.
 * Specify gemset name in .ruby-gemset file. This is simplify to separate scope 
   of gems from other projects on developer's computers and on some production
   deployments as well.
