@@ -1,8 +1,5 @@
 TODO:
 
-* Specify gemset name in .ruby-gemset file. This is simplify to separate scope 
-  of gems from other projects on developer's computers and on some production
-  deployments as well.
 * Used Ruby version MRI 1.9.3 is stale and it's officially recommended to 
   switch to one of 2.x branches because of security and support. Also some 
   feature and performance improvements (most singificant is GC) was made in 
