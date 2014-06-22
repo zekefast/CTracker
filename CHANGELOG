@@ -1,0 +1,4 @@
+CHANGELOG:
+
+* Fix defect with absent JavaScript environment which present tests from 
+  running.
