@@ -13,7 +13,7 @@ class CountriesController < ApplicationController
   # GET /countries/1
   # GET /countries/1.xml
   def show
-    @country = Country.find(params[:id])
+    @country = Country.find(params.require(:id))
 
     respond_to do |format|
       format.html # show.html.erb
@@ -23,13 +23,13 @@ class CountriesController < ApplicationController
 
   # GET /countries/1/edit
   def edit
-    @country = Country.find(params[:id])
+    @country = Country.find(params.require(:id))
   end
 
   # POST /countries
   # POST /countries.xml
   def create
-    @country = Country.new(params[:country])
+    @country = Country.new(params.require(:country).permit(:name, :code, :visited))
 
     respond_to do |format|
       if @country.save
@@ -45,10 +45,10 @@ class CountriesController < ApplicationController
   # PUT /countries/1
   # PUT /countries/1.xml
   def update
-    @country = Country.find(params[:id])
+    @country = Country.find(params.require(:id))
 
     respond_to do |format|
-      if @country.update_attributes(params[:country])
+      if @country.update_attributes(params.require(:country).permit(:name, :code, :visited))
         format.html { redirect_to(@country, :notice => 'Country was successfully updated.') }
         format.xml  { head :ok }
       else

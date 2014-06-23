@@ -19,10 +19,12 @@ class DataUpdater
     return nil if response.nil?
 
     data = parse_response(response)
-    data.keys.each do |key| 
+    data.keys.each do |key|
       data[key].each do |attributes|
-        object = key.to_s.classify.constantize.find_or_create_by_code(attributes)
-        
+        object = key.to_s.classify.constantize.
+          create_with(attributes).
+          find_or_create_by(code: attributes[:code])
+
       end
     end
   end
@@ -45,7 +47,7 @@ class DataUpdater
   #         :country_code => "Country Code"
   #       }
   #     ],
-  #     
+  #
   #     :countries => [
   #       { :name => "Country Name",
   #         :code => "Country Code"
@@ -56,14 +58,14 @@ class DataUpdater
     doc = Nokogiri::XML::Document.parse( response.to_hash[:get_currencies_response][:get_currencies_result] )
 
     result = {}
-    
+
     result[:currencies] = doc.css('Table').collect do |table|
       { :name => table.css('Currency').text,
         :code => table.css('CurrencyCode').text,
         :country_id => table.css('CountryCode').text
       }
     end
-    
+
     result[:countries] = doc.css('Table').collect {|table| { :name => table.css('Name').text, :code => table.css('CountryCode').text } }
 
     result.keys.each {|key| result[key].reject! {|hash| hash[:name].blank? || hash[:code].blank? } }

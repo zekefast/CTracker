@@ -13,7 +13,7 @@ class CurrenciesController < ApplicationController
   # GET /currencies/1
   # GET /currencies/1.xml
   def show
-    @currency = Currency.find(params[:id])
+    @currency = Currency.find(params.require(:id))
 
     respond_to do |format|
       format.html # show.html.erb
