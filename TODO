@@ -1,10 +1,5 @@
 TODO:
 
-* TestUnit for Ruby is rarely used nowadays.
-  There is a commonly known better replacement to it, like RSpec.
-  Latest version of it 3.0.0 and along with new powerful feature it doesn't
-  polute tested objects with test specific methods (when expect syntax is used).
-  So, it's worth to upgrade tests framework to RSpec.
 * There is a much better replacement to static fixtures provided by Rails.
   Replace Rails's fixtures with "rails-factory_girl".
 

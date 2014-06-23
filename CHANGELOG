@@ -29,3 +29,18 @@ CHANGELOG:
  * Fix DataUpdater, because of changed ActiveRecord API.
    find_and_create_by_code(attributes) call was replaced with
    create_with(attributes).find_and_create_by(code: attributes[:code]).
+* TestUnit for Ruby is rarely used nowadays.
+  There is a commonly known better replacement to it, like RSpec.
+  Latest version of it 3.0.0 and along with new powerful feature it doesn't
+  polute tested objects with test specific methods (when expect syntax is used).
+  So, it's worth to upgrade tests framework to RSpec.
+ * Migrate TestUnit tests to RSpec:
+  * Migrate models tests.
+  * Migrate controllers tests.
+ * Replace customer test helper test_validates_presence_of with similar one 
+   provided by "shoulda-matchers" gem.
+ * Replace customer test helper should_not_respond_to_actions with
+   shared examples with similar name.
+ * Move fixtures from test/ directory to spec/.
+ * Remove warnings in features/step_definitions/web_steps.rb caused by usage of
+   should syntax.
