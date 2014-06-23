@@ -35,6 +35,8 @@ Rails.application.configure do
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 
+  config.action_mailer.default_url_options = {host: "localhost", port: 3000}
+
   # Don't use the real Web Service, use the seed data.
   USE_STATIC_DATA = true
 end
