@@ -1,13 +1,2 @@
 TODO:
 
-* Add user authentication with help of "devise" gem.
- * Add "devise" gem dependency.
- * Install devise
- * Generate user model
- * Configure devise modules and users table fields in migration.
- * Show appropriate links when user doesn't authenticated and authenticated.
- * Add tests for User model.
- * Add User model factory.
- * Fix country and currency controllers' tests.
- * Fix cucumber's tests.
- * Describe authentication feature (sing up/in/out).
