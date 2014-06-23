@@ -14,3 +14,18 @@ CHANGELOG:
   feature and performance improvements (most singificant is GC) was made in
   latest versions of MRI interpreter was made.
   So, Ruby update simplify and improve development and production usage process.
+* Many bug fixes and features was made to new version of Ruby on Rails 4.1.1.
+  So, to avoid fixing stale and commonly know problems and not to implement features
+  present in 4.1.1 branch application moved to latest version of Ruby on Rails
+  (4.1.1).
+ * Update files generated on creation of default Ruby on Rails application.
+ * Use "strong parameters" instead of "attr_accessible".
+ * Update "cucumber-rails" to fix warning in cucumber test runs.
+ * Replace unsupported :consitions keys for ActiveRecord scopes to lambdas.
+ * Fix test helper should_not_respond_to_actions method by changin expected
+   exception from ActionController::RoutingError to
+   ActionController::UrlGenerationError.
+ * Disable turbolinks.
+ * Fix DataUpdater, because of changed ActiveRecord API.
+   find_and_create_by_code(attributes) call was replaced with
+   create_with(attributes).find_and_create_by(code: attributes[:code]).
