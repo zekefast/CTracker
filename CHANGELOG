@@ -44,3 +44,8 @@ CHANGELOG:
  * Move fixtures from test/ directory to spec/.
  * Remove warnings in features/step_definitions/web_steps.rb caused by usage of
    should syntax.
+* There is a much better replacement to static fixtures provided by Rails.
+  Replace Rails's fixtures with "factory_girl_rails".
+ * Create factory girl models for country and currency models.
+ * Remove fixtures.
+ * Replace usage of fixtures to factories in tests.

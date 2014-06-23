@@ -1,5 +1,2 @@
 TODO:
 
-* There is a much better replacement to static fixtures provided by Rails.
-  Replace Rails's fixtures with "rails-factory_girl".
-
