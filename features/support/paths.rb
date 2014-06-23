@@ -9,7 +9,11 @@ module NavigationHelpers
     case page_name
 
     when /the home\s?page/
-      '/'
+      root_path
+    when /the sign up page/
+      new_user_registration_path
+    when /the sign in page/
+      new_user_session_path
     when /the new country page/
       new_country_path
     when /the countries page/

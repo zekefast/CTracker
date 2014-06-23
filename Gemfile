@@ -43,6 +43,7 @@ gem 'spring',        group: :development
 
 gem 'savon', '~>1.0'
 gem 'nokogiri'
+gem "devise"
 
 group :development do
   gem 'capybara'
