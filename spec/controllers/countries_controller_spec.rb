@@ -2,9 +2,7 @@ require "rails_helper"
 
 
 RSpec.describe CountriesController, :type => :controller do
-  fixtures :countries
-
-  let(:country) { countries(:one) }
+  let(:country) { FactoryGirl.create(:country) }
 
 
   it_behaves_like "controller does not respond to actions",

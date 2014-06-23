@@ -2,9 +2,7 @@ require "rails_helper"
 
 
 RSpec.describe CurrenciesController, :type => :controller do
-  fixtures :currencies
-
-  let(:currency) { currencies(:one) }
+  let(:currency) { FactoryGirl.create(:currency) }
 
 
   it_behaves_like "controller does not respond to actions",
