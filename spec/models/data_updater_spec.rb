@@ -16,7 +16,7 @@ RSpec.describe DataUpdater, :type => :model do
     let(:expected) do
       {
         :countries  => [{ :name => "Afghanistan, Islamic State of", :code => "af" }],
-        :currencies => [{ :name => "Afghani", :code => "AFA", :country_id => "af" }]
+        :currencies => [{ :name => "Afghani", :code => "AFA", :country_code => "af" }]
       }
     end
 

@@ -1,11 +1,12 @@
 class CreateCurrencies < ActiveRecord::Migration
   def self.up
-    create_table :currencies, :id => false do |t|
-      t.string :name
-      t.string :code
+    create_table :currencies do |t|
+      t.string :name, null: false
+      t.string :code, null: false
 
       t.timestamps
-      t.primary_key :code
+
+      t.index :code, unique: true
     end
   end
 

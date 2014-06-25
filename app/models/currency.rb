@@ -1,9 +1,8 @@
 class Currency < ActiveRecord::Base
-  self.primary_key = :code
-
   validates_presence_of :name
   validates_presence_of :code
   validates_uniqueness_of :code, :allow_blank => true
+  validates_presence_of :country
 
   belongs_to :country
 

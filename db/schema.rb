@@ -13,21 +13,26 @@
 
 ActiveRecord::Schema.define(version: 20140623165431) do
 
-  create_table "countries", id: false, force: true do |t|
-    t.string   "name"
-    t.string   "code"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+  create_table "countries", force: true do |t|
+    t.string   "name",                       null: false
+    t.string   "code",                       null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.boolean  "visited",    default: false
   end
 
-  create_table "currencies", id: false, force: true do |t|
-    t.string   "name"
-    t.string   "code"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string   "country_id"
+  add_index "countries", ["code"], name: "index_countries_on_code", unique: true
+
+  create_table "currencies", force: true do |t|
+    t.string   "name",       null: false
+    t.string   "code",       null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "country_id", null: false
   end
+
+  add_index "currencies", ["code"], name: "index_currencies_on_code", unique: true
+  add_index "currencies", ["country_id"], name: "index_currencies_on_country_id"
 
   create_table "users", force: true do |t|
     t.string   "email",              default: "", null: false

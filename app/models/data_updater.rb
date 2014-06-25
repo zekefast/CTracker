@@ -19,13 +19,17 @@ class DataUpdater
     return nil if response.nil?
 
     data = parse_response(response)
-    data.keys.each do |key|
-      data[key].each do |attributes|
-        object = key.to_s.classify.constantize.
-          create_with(attributes).
-          find_or_create_by(code: attributes[:code])
 
-      end
+    countries = {}
+    data[:countries].each do |attributes|
+      countries[attributes[:code]] = Country.
+        create_with(attributes).
+        find_or_create_by!(code: attributes[:code])
+    end
+    data[:currencies].each do |attributes|
+      Currency.
+        create_with(attributes.merge(country: countries[attributes.delete(:country_code)])).
+        find_or_create_by!(code: attributes[:code])
     end
   end
 
@@ -60,13 +64,13 @@ class DataUpdater
     result = {}
 
     result[:currencies] = doc.css('Table').collect do |table|
-      { :name => table.css('Currency').text,
-        :code => table.css('CurrencyCode').text,
-        :country_id => table.css('CountryCode').text
+      { :name => table.css('Currency').text.try(:strip),
+        :code => table.css('CurrencyCode').text.try(:strip),
+        :country_code => table.css('CountryCode').text.try(:strip)
       }
     end
 
-    result[:countries] = doc.css('Table').collect {|table| { :name => table.css('Name').text, :code => table.css('CountryCode').text } }
+    result[:countries] = doc.css('Table').collect {|table| { :name => table.css('Name').text.try(:strip), :code => table.css('CountryCode').text.try(:strip) } }
 
     result.keys.each {|key| result[key].reject! {|hash| hash[:name].blank? || hash[:code].blank? } }
 
