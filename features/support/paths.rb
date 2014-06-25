@@ -14,12 +14,18 @@ module NavigationHelpers
       new_user_registration_path
     when /the sign in page/
       new_user_session_path
-    when /the new country page/
-      new_country_path
     when /the countries page/
       countries_path
     when /a country page/
-      country_path(Country.create!(:name => "Test Country", :code => "tc"))
+      currency = Currency.
+        create_with(
+          name:    "test currency",
+          country: Country.
+            create_with(name: "test country").
+            find_or_create_by!(code: "tc")
+        ).
+        find_or_create_by!(code: "tstc")
+      country_path(currency.country)
     when /a country edit page/
       edit_country_path(Country.create!(:name => "Test Country #{Time.now.to_i}", :code => Time.now.to_s))
 

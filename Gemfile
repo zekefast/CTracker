@@ -44,6 +44,7 @@ gem 'spring',        group: :development
 gem 'savon', '~>1.0'
 gem 'nokogiri'
 gem "devise"
+gem "virtus"
 
 group :development do
   gem 'capybara'

@@ -10,6 +10,7 @@ RSpec.describe CountriesController, :type => :controller do
 
     it_behaves_like "controller does not respond to actions",
       :new     => :get,
+      :create  => :post,
       :destroy => :get
 
     it "gets index" do
@@ -17,22 +18,6 @@ RSpec.describe CountriesController, :type => :controller do
 
       expect(response).to have_http_status(:success)
       expect(assigns[:countries]).not_to be_nil
-    end
-
-    it "creates country" do
-      expect do
-        post :create, :country => country.attributes.merge({:code => Time.now.to_s})
-      end.to change { Country.count }
-
-      expect(response).to redirect_to(country_path(assigns[:country]))
-    end
-
-    it "does not create duplicate currency" do
-      expect do
-        post :create, :country => country.attributes
-      end.not_to change { Currency.count }
-
-      expect(assigns[:country].errors[:code]).not_to be_empty
     end
 
     it "shows country" do
@@ -48,9 +33,9 @@ RSpec.describe CountriesController, :type => :controller do
     end
 
     it "updates country" do
-      put :update, :id => country.to_param, :country => country.attributes
+      put :update, :id => country.to_param, country_form_object: {visited: false}
 
-      expect(response).to redirect_to(country_path(assigns[:country]))
+      expect(response).to redirect_to(country_path(assigns[:form].country))
     end
   end # whe user authenticated
 end

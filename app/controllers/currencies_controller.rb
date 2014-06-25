@@ -2,7 +2,8 @@ class CurrenciesController < ApplicationController
   # GET /currencies
   # GET /currencies.xml
   def index
-    @currencies = Currency.all
+    @currencies           = Currency.all
+    @collected_currencies = current_user.currencies.to_a
 
     respond_to do |format|
       format.html # index.html.erb

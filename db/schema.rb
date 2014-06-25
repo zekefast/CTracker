@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140623165431) do
+ActiveRecord::Schema.define(version: 20140624134358) do
+
+  create_table "collection_items", force: true do |t|
+    t.integer  "user_id",     null: false
+    t.integer  "currency_id", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "collection_items", ["currency_id"], name: "index_collection_items_on_currency_id"
+  add_index "collection_items", ["user_id", "currency_id"], name: "index_collection_items_on_user_id_and_currency_id", unique: true
+  add_index "collection_items", ["user_id"], name: "index_collection_items_on_user_id"
 
   create_table "countries", force: true do |t|
     t.string   "name",                       null: false

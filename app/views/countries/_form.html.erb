@@ -1,10 +1,10 @@
-<%= form_for(@country) do |f| %>
-  <% if @country.errors.any? %>
+<%= form_for(@form, url: country_path(@form.country), :method => :patch) do |f| %>
+  <% if @form.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@country.errors.count, "error") %> prohibited this country from being saved:</h2>
+      <h2><%= pluralize(@form.errors.count, "error") %> prohibited this country from being saved:</h2>
 
       <ul>
-      <% @country.errors.full_messages.each do |msg| %>
+      <% @form.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
@@ -12,18 +12,10 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :code %><br />
-    <%= f.text_field :code %>
-  </div>
-  <div class="field">
     <%= f.label :visited %><br />
     <%= f.check_box :visited %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Update Country" %>
   </div>
 <% end %>

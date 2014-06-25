@@ -2,7 +2,8 @@ class CountriesController < ApplicationController
   # GET /countries
   # GET /countries.xml
   def index
-    @countries = Country.all
+    @countries         = Country.all
+    @visited_countries = current_user.countries.to_a
 
     respond_to do |format|
       format.html # index.html.erb
@@ -23,38 +24,29 @@ class CountriesController < ApplicationController
 
   # GET /countries/1/edit
   def edit
-    @country = Country.find(params.require(:id))
-  end
-
-  # POST /countries
-  # POST /countries.xml
-  def create
-    @country = Country.new(params.require(:country).permit(:name, :code, :visited))
-
-    respond_to do |format|
-      if @country.save
-        format.html { redirect_to(@country, :notice => 'Country was successfully created.') }
-        format.xml  { render :xml => @country, :status => :created, :location => @country }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @country.errors, :status => :unprocessable_entity }
-      end
-    end
+    @form = CountryFormObject.new(params.permit(:id).merge(user: current_user))
   end
 
   # PUT /countries/1
   # PUT /countries/1.xml
   def update
-    @country = Country.find(params.require(:id))
+    @form = CountryFormObject.new(country_form_object_params)
 
     respond_to do |format|
-      if @country.update_attributes(params.require(:country).permit(:name, :code, :visited))
-        format.html { redirect_to(@country, :notice => 'Country was successfully updated.') }
+      if @form.save
+        format.html { redirect_to(@form.country, :notice => 'Country was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
-        format.xml  { render :xml => @country.errors, :status => :unprocessable_entity }
+        format.xml  { render :xml => @form.errors, :status => :unprocessable_entity }
       end
     end
+  end
+
+  private def country_form_object_params
+    params.permit(:id).
+      merge(params.require(:country_form_object).permit(:visited)).
+      merge(user: current_user).
+      symbolize_keys
   end
 end

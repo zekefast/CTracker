@@ -1,5 +1,15 @@
 <h1>Editing country</h1>
 
+<p>
+  <b>Name:</b>
+  <%= @form.country.name %>
+</p>
+
+<p>
+  <b>Code:</b>
+  <%= @form.country.code %>
+</p>
+
 <%= render 'form' %>
 
 <%= link_to 'Show', @country %> |

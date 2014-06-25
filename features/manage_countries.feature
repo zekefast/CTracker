@@ -28,3 +28,21 @@ Feature: Manage countries
     And I check "Visited"
     And I press "Update Country"
     Then I should see "Status: Visited"
+
+  Scenario Outline: Ensures visited countries tracked in separate list for
+    different users.
+    Given I am a collector registered with "<email1>" and "<password>"
+    And I am signed in with "<email1>" and "<password>"
+    And I am on a country page
+    When I follow "Edit"
+    And I check "Visited"
+    And I press "Update Country"
+    And I follow "Sing out"
+    And I am a collector registered with "<email2>" and "<password>"
+    And I am signed in with "<email2>" and "<password>"
+    And I am on a country page
+    Then I should see "Status: Not Visited"
+
+    Examples:
+      | email1               | email2                          | password |
+      | mr.smart@example.com | brother_of_mr.smart@example.com | secret00 |
