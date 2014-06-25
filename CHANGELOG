@@ -60,3 +60,23 @@ CHANGELOG:
  * Fix country and currency controllers' tests.
  * Fix cucumber's tests.
  * Describe authentication feature (sing up/in/out).
+* Usage of code columns as primary key for currency and country isn't a good idea.
+  It's a best practice to select primary keys for tables independent from external
+  world, because changing records primary keys cause a lot of problems on migrations.
+  Aside of that Ruby on Rails and FactoryGirl worked better with integer primary keys.
+  Taking into account all that factors I've refactored relationship 
+  between countries and currencies using integer primary keys.
+  I've changed some migration directly instead of generation new ones because
+  project haven't been deployed anywhere and it's should be save to do.
+ * Add "id" fields to countries and currencies tables and make it a primary key
+   instead of "code" fields.
+ * Fix Country and Currency models accordingly to changes in tables.
+ * Fix DataUpdater to properly establish relation between Currency and Country records.
+ * Make "name" and "code" fields not null on currencies table.
+ * Make "name" and "code" fields not null on countries table.
+ * Add unique index on "code" field in countries and currencies tables.
+ * Make "currencies.country_id" FK not null as currency have to always have a
+   country it belongs to.
+ * Update db/schema.rb
+ * Fix currency factory model after prevent nullifing of currencies.country_id field.
+ * Fix broken tests.
