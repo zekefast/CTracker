@@ -37,7 +37,7 @@ Feature: Manage countries
     When I follow "Edit"
     And I check "Visited"
     And I press "Update Country"
-    And I follow "Sing out"
+    And I follow "Sign out"
     And I am a collector registered with "<email2>" and "<password>"
     And I am signed in with "<email2>" and "<password>"
     And I am on a country page

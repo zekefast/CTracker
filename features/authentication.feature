@@ -15,7 +15,7 @@ Feature: Collector authentication
     And I should see "Currencies"
     And I should see "Countries"
     And I should see "Profile (<email>)"
-    And I should see "Sing out"
+    And I should see "Sign out"
 
     Examples:
       | email                | password |
@@ -32,7 +32,7 @@ Feature: Collector authentication
     And I should see "Currencies"
     And I should see "Countries"
     And I should see "Profile (<email>)"
-    And I should see "Sing out"
+    And I should see "Sign out"
 
     Examples:
       | email                | password |
@@ -41,8 +41,8 @@ Feature: Collector authentication
   Scenario: Success sign out
     Given I am a new, authenticated user
     And I am on the home page
-    And I should see "Sing out"
-    When I follow "Sing out"
+    And I should see "Sign out"
+    When I follow "Sign out"
     Then I should be on the sign in page
     And I should see "Sign in"
     And I should see "Sign up"
