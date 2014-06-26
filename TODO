@@ -1,16 +1,2 @@
 TODO:
 
-* Add visit checkboxes to country table's rows with immediate AJAX action.
- * As relation with collection item established through currency and collector
-   never visit a country without collecting a currency I able to not to show
-   cuntries without currencies. So, I hide such countries.
- * Add ability to respond to JSON requests to CountriesController#update.
-* Add Select All checkbox with dynamic selection of all table rows.
-* Add Send button to apply result of selection made with "Select All" checkbox.
-* Add "Search" field to filter countries by name and code.
-* Fix action which send ajax request with visit state to act only on the rows
-  with different checkbox and status states, i.e. rows selected/unselected with
-  "Select All" checkbox.
-* Update pie chart as countries visited/unvisited
-* Add visual indication on row updated with AJAX.
-* Fix Cucumber tests.
