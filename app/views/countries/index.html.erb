@@ -13,8 +13,17 @@
 
   <h1>Countries</h1>
 
-  <table>
+  <div class="search">
+    <%= label_tag :search %>
+    <%= text_field_tag :search %>
+  </div>
+  <table id="list">
     <tr>
+      <th>
+        <%= check_box_tag :select_all %>
+        <%= label_tag :select_all, "Select All"%>
+        <%= button_tag "Send", id: "send_all" %>
+      </th>
       <th>Name</th>
       <th>Code</th>
       <th>Status</th>
@@ -23,10 +32,13 @@
     </tr>
 
   <% @countries.each do |country| %>
-    <tr>
-      <td><%= country.name %></td>
-      <td><%= country.code %></td>
-      <td><%= @visited_countries.include?(country) ? 'Visited' : 'Not Visited' %></td>
+    <tr id="row<%= country.id %>" class="fade">
+      <td>
+        <%= check_box_tag "country#{country.id}", country.id, @visited_countries.include?(country), class: "actionable" %>
+      </td>
+      <td class="name"><%= country.name %></td>
+      <td class="code"><%= country.code %></td>
+      <td class="status"><%= @visited_countries.include?(country) ? 'Visited' : 'Not Visited' %></td>
       <td><%= link_to 'Show', country %></td>
       <td><%= link_to 'Edit', edit_country_path(country) %></td>
     </tr>

@@ -2,7 +2,7 @@ class CountriesController < ApplicationController
   # GET /countries
   # GET /countries.xml
   def index
-    @countries         = Country.all
+    @countries         = Country.joins(:currencies).all
     @visited_countries = current_user.countries.to_a
 
     respond_to do |format|
@@ -35,10 +35,12 @@ class CountriesController < ApplicationController
     respond_to do |format|
       if @form.save
         format.html { redirect_to(@form.country, :notice => 'Country was successfully updated.') }
-        format.xml  { head :ok }
+        format.json { head :no_content }
+        format.xml  { head :no_content }
       else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @form.errors, :status => :unprocessable_entity }
+        format.html { render action: "edit"                                         }
+        format.json { render json:   @form.errors, :status => :unprocessable_entity }
+        format.xml  { render xml:    @form.errors, :status => :unprocessable_entity }
       end
     end
   end

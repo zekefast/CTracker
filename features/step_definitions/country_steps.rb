@@ -1,5 +1,7 @@
 Given /the following countries exist:/ do |countries|
-  Country.create!(countries.hashes.reject { |c| c[:visited] == "true" })
+  countries.hashes.reject { |c| c[:visited] == "true" }.each do |country|
+    FactoryGirl.create(:currency, country: Country.create!(country))
+  end
 
   user = User.find_by(email: "testing@man.net")
   countries.hashes.select { |country| country[:visited] == "true" }.each do |country|
