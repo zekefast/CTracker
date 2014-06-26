@@ -25,11 +25,10 @@ ActiveRecord::Schema.define(version: 20140624134358) do
   add_index "collection_items", ["user_id"], name: "index_collection_items_on_user_id"
 
   create_table "countries", force: true do |t|
-    t.string   "name",                       null: false
-    t.string   "code",                       null: false
+    t.string   "name",       null: false
+    t.string   "code",       null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "visited",    default: false
   end
 
   add_index "countries", ["code"], name: "index_countries_on_code", unique: true

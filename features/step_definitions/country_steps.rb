@@ -1,11 +1,17 @@
 Given /the following countries exist:/ do |countries|
-  countries.hashes.reject { |c| c[:visited] == "true" }.each do |country|
-    FactoryGirl.create(:currency, country: Country.create!(country))
-  end
-
   user = User.find_by(email: "testing@man.net")
-  countries.hashes.select { |country| country[:visited] == "true" }.each do |country|
-    FactoryGirl.create(:collection_item, user: user, currency: FactoryGirl.create(:currency, country: Country.create!(country)))
+
+  countries.hashes.each do |country_attributes|
+    is_create_collection_item = country_attributes.delete("visited") == "true"
+    country                   = Country.create!(country_attributes)
+
+    if is_create_collection_item
+      FactoryGirl.create(:collection_item,
+        user:     user,
+        currency: FactoryGirl.create(:currency, country: country))
+    else
+      FactoryGirl.create(:currency, country: country)
+    end
   end
 end
 
